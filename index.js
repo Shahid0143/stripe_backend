@@ -22,17 +22,17 @@ app.post("/checkout", async (req, res) => {
       line_items: req.body.items.map((item) => {
         return {
           price_data: {
-            currency: "usd", 
-            unit_amount: item.price * 100, 
+            currency: "usd",
+            unit_amount: item.price * 100,
             product_data: {
-              name: item.title, 
+              name: item.title,
             },
           },
-          quantity: item.quantity, 
+          quantity: item.quantity,
         };
       }),
-      success_url: "http://localhost:5173/success",
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: "https://stripe-integration-frontend.vercel.app/success",
+      cancel_url: "https://stripe-integration-frontend.vercel.app/cancel",
     });
     res.json({ url: session.url });
   } catch (error) {
